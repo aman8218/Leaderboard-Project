@@ -23,7 +23,7 @@ const UserList = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/users");
+      const res = await fetch("https://leaderboard-project-sooty.vercel.app/api/users");
       const data = await res.json();
       setUsersWithRanks(data);
     } catch (err) {
@@ -45,7 +45,7 @@ const UserList = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/api/users", {
+      const res = await axios.post("https://leaderboard-project-sooty.vercel.app/api/users", {
         name: newUserName,
       });
       setUsersWithRanks([...users, res.data]);
@@ -58,7 +58,7 @@ const UserList = () => {
 
   const handleDelete = async (userId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/users/${userId}`);
+      await axios.delete(`https://leaderboard-project-sooty.vercel.app/api/users/${userId}`);
       const filtered = users.filter((user) => user._id !== userId);
       setUsersWithRanks(filtered);
       setDeleteUserId(null);
@@ -70,7 +70,7 @@ const UserList = () => {
 
   const handleClaimPoints = async (userId) => {
     try {
-      const res = await axios.post(`http://localhost:5000/api/users/claim/${userId}`);
+      const res = await axios.post(`https://leaderboard-project-sooty.vercel.app/api/users/claim/${userId}`);
       const updatedUser = res.data;
 
       const updatedUsers = users.map((user) =>
